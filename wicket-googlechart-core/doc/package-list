@@ -1,0 +1,10 @@
+it.ricfed.wicket.googlecharts.core
+it.ricfed.wicket.googlecharts.data
+it.ricfed.wicket.googlecharts.data.sets
+it.ricfed.wicket.googlecharts.options
+it.ricfed.wicket.googlecharts.options.chart
+it.ricfed.wicket.googlecharts.options.control
+it.ricfed.wicket.googlecharts.utils
+it.ricfed.wicket.googlecharts.wrapper
+it.ricfed.wicket.googlecharts.wrapper.chart
+it.ricfed.wicket.googlecharts.wrapper.control
