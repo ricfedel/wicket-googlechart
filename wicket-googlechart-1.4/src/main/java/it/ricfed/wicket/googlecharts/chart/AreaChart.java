@@ -21,4 +21,6 @@ public class AreaChart extends Chart<AreaChartWrapper>{
 	}
 
 
+
+
 }

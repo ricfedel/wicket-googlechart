@@ -7,8 +7,8 @@ import it.ricfed.wicket.googlecharts.wrapper.ChartWrapper;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
-public abstract class Chart<C extends ChartWrapper<?>> extends
-		WrapperContainer {
+public abstract class Chart<C extends ChartWrapper<?>> extends WrapperContainer
+		implements IChart<C> {
 
 	private static final long serialVersionUID = -5882448897795445250L;
 
@@ -21,16 +21,25 @@ public abstract class Chart<C extends ChartWrapper<?>> extends
 		this.wrapper = c;
 	}
 
+	@Override
 	public C getWrapper() {
 		return wrapper.getObject();
 	}
 
-	public void setDataTable(DataTable dataTable){
+	@Override
+	public void setDataTable(DataTable dataTable) {
 		getWrapper().setDataTable(dataTable);
 	}
-	public void setDataTable(ChartData data){
+
+	@Override
+	public void setDataTable(ChartData data) {
 		getWrapper().setDataTable(data);
-	}	
+	}
+
+	@Override
+	public DataTable getDataTable() {
+		return getWrapper().getDataTable();
+	}
 	
 	@Override
 	protected void onInitialize() {
@@ -43,13 +52,21 @@ public abstract class Chart<C extends ChartWrapper<?>> extends
 		return this;
 	}
 
+	@Override
 	public boolean isInDashboard() {
 		return inDashboard;
 	}
 
+	@Override
 	public void setInDashboard(boolean inDashboard) {
 		this.inDashboard = inDashboard;
 	}
+
+	@Override
+	public boolean isControl() {
+		return false;
+	}
+
 
 
 }

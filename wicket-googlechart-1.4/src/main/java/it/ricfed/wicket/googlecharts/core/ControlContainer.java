@@ -38,5 +38,9 @@ public abstract class ControlContainer<C extends ControlWrapper<?,?>> extends Wr
 	public boolean isInDashboard() {
 		return true;
 	}
+	@Override
+	public  boolean isControl(){
+		return true;
+	}
 
 }

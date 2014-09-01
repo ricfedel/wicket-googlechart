@@ -31,11 +31,15 @@ public abstract class ControlContainer<C extends ControlWrapper<?,?>> extends Wr
 	protected void onInitialize() {
 		super.onInitialize();
 		setOutputMarkupId(true);
-		add(new ControlBehavior());
+		add(new ControlBehavior(this));
 	}
 
 	@Override
 	public boolean isInDashboard() {
+		return true;
+	}
+	@Override
+	public  boolean isControl(){
 		return true;
 	}
 

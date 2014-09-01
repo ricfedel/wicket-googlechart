@@ -30,8 +30,8 @@
 	</developers>
 	<scm>
 		<url>https://github.com/ricfedel/wicket-googlechart.git</url>
-		<connection>scm:git:ssh://git@github.com/ricfedel/wicket-googlechart.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/ricfedel/wicket-googlechart.git</developerConnection>
+		<connection>scm:git:https://github.com/ricfedel/wicket-googlechart.git</connection>
+		<developerConnection>scm:git:https://github.com/ricfedel/wicket-googlechart.git</developerConnection>
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>
@@ -134,6 +134,16 @@
 					<useReleaseProfile>false</useReleaseProfile>
 					<releaseProfiles>release</releaseProfiles>
 					<goals>deploy</goals>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>1.9.1</version>
+				<configuration>
+				    <goals>release</goals>
+					<username>ricfedel</username>
+					<password>riccardo2014</password>
 				</configuration>
 			</plugin>
 			<plugin>

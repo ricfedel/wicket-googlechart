@@ -5,7 +5,7 @@
 <title>wicket-googlechart example</title>
 </head>
 <body>
-	<div wicket:id="pieChart"></div>
+	<div wicket:id="pieChart" ></div>
 	<div wicket:id="dashboard">
 		<div wicket:id="control"></div>
 		<div wicket:id="barChart"></div>
@@ -13,7 +13,9 @@
 		<div wicket:id="areaChart"></div>
 		<div wicket:id="tableChart"></div>
 	</div>
-
-
+	<button 
+	onclick="showImage('pieChart','image_div');"
+	>Image Pie</button>
+    <div id="image_div" ></div>
 </body>
 </html>

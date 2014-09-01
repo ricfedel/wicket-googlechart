@@ -100,7 +100,6 @@ public class ExamplePage extends WebPage {
 			pieChart.getWrapper().getOptions().setLegend(legend);
 		}
 		add(pieChart);
-
 	}
 
 }

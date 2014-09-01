@@ -13,24 +13,19 @@ import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.resource.JQueryResourceReference;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-public abstract class BaseBehavior extends AbstractDefaultAjaxBehavior {
+public abstract class BaseBehavior extends AbstractDefaultAjaxBehavior implements IBaseBehavior{
 
 	private static final long serialVersionUID = 5935294904099227859L;
-	private ObjectMapper mapper;
+	private WrapperContainer container;
 
+	Resolver resolver = new Resolver();
 
-	public ObjectMapper getMapper() {
-		if (mapper == null) {
-			mapper = new ObjectMapper();
-		}
-		return mapper;
+	public BaseBehavior(WrapperContainer container) {
+		this.container = container;
 	}
-	
+
 	@Override
 	protected void respond(AjaxRequestTarget target) {
-
 	}
 
 	@Override
@@ -52,29 +47,34 @@ public abstract class BaseBehavior extends AbstractDefaultAjaxBehavior {
 		response.render(JavaScriptHeaderItem.forScript(jsg, "jsg"));
 		response.render(JavaScriptHeaderItem
 				.forReference(new JavaScriptResourceReference(
-						Chart.class, "bridge.js")));
+						Resolver.class, "bridge.js")));
 
 
 		generate(component, response, domreadySupport);
 
 	}
-
 	protected void generate(Component component, IHeaderResponse response, boolean domreadySupport) {
 		if (component instanceof IWrapperContainer) {
 			IWrapperContainer g = (IWrapperContainer) component;
 			if (domreadySupport) {
 				response.render(OnDomReadyHeaderItem.forScript(toScript(g)));
-				if (!g.isInDashboard())
-					response.render(OnDomReadyHeaderItem.forScript("obj_"
-							+ component.getMarkupId() + ".draw()"));
 			} else {
 				response.render(OnLoadHeaderItem.forScript(toScript(g)));
-				if (!g.isInDashboard())
-					response.render(OnLoadHeaderItem.forScript("obj_"
-							+ component.getMarkupId() + ".draw()"));
 			}
 
 		}
 	}
-	protected abstract String toScript(IWrapperContainer component);
+
+
+	public abstract String toScript(IWrapperContainer component);
+
+	public WrapperContainer getContainer() {
+		return container;
+	}
+
+	public Resolver getResolver() {
+		return resolver;
+	}
+
+
 }

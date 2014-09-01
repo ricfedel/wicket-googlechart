@@ -1,6 +1,5 @@
 package it.ricfed.wicket.googlecharts.core;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.Session;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -10,28 +9,19 @@ import org.apache.wicket.protocol.http.ClientProperties;
 import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.protocol.http.request.WebClientInfo;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-public abstract class BaseBehavior extends AbstractDefaultAjaxBehavior {
+public abstract class BaseBehavior extends AbstractDefaultAjaxBehavior implements IBaseBehavior{
 
 	private static final long serialVersionUID = 5935294904099227859L;
-	private ObjectMapper mapper;
 	private WrapperContainer container;
+
+	Resolver resolver = new Resolver();
 
 	public BaseBehavior(WrapperContainer container) {
 		this.container = container;
 	}
 
-	public ObjectMapper getMapper() {
-		if (mapper == null) {
-			mapper = new ObjectMapper();
-		}
-		return mapper;
-	}
-
 	@Override
 	protected void respond(AjaxRequestTarget target) {
-
 	}
 
 	@Override
@@ -51,13 +41,13 @@ public abstract class BaseBehavior extends AbstractDefaultAjaxBehavior {
 				+ "packages : [ 'corechart', 'controls', 'table' ]\n" + "});";
 		response.renderJavascript(jsg, "jsg");
 		response.renderJavascriptReference(new JavascriptResourceReference(
-				Chart.class, "bridge.js"));
+				Resolver.class, "bridge.js"));
 
 		generate(container, response, domreadySupport);
 
 	}
 
-	protected void generate(Component component, IHeaderResponse response,
+	protected void generate(IWrapperContainer component, IHeaderResponse response,
 			boolean domreadySupport) {
 		if (component instanceof IWrapperContainer) {
 			IWrapperContainer g = (IWrapperContainer) component;
@@ -72,10 +62,14 @@ public abstract class BaseBehavior extends AbstractDefaultAjaxBehavior {
 		}
 	}
 
-	protected abstract String toScript(IWrapperContainer component);
+	public abstract String toScript(IWrapperContainer component);
 
 	public WrapperContainer getContainer() {
 		return container;
+	}
+
+	public Resolver getResolver() {
+		return resolver;
 	}
 
 }
