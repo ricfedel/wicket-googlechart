@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.ricfedel</groupId>
 	<artifactId>wicket-googlechart</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>wicket-googlechart-core</module>
@@ -165,7 +165,7 @@
 	<properties>
 		<jetty.version>6.1.26</jetty.version>
 		<jackson.version>2.1.4</jackson.version>
-		<wicket.googlechart.version>1.0.0</wicket.googlechart.version>
+		<wicket.googlechart.version>1.1.0</wicket.googlechart.version>
 	</properties>
 
 </project>
