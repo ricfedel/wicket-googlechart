@@ -38,7 +38,7 @@ public abstract class BaseBehavior extends AbstractDefaultAjaxBehavior implement
 		boolean domreadySupport = !(isIE && isLowerThan9);
 		response.renderJavascriptReference("https://www.google.com/jsapi");
 		String jsg = "	google.load('visualization', '1.2', {\n"
-				+ "packages : [ 'corechart', 'controls', 'table' ]\n" + "});";
+				+ "packages : [ 'corechart', 'controls', 'table', 'orgchart']\n" + "});";
 		response.renderJavascript(jsg, "jsg");
 		response.renderJavascriptReference(new JavascriptResourceReference(
 				Resolver.class, "bridge.js"));

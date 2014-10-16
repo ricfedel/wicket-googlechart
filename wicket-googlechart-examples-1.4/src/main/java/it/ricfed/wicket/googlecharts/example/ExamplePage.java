@@ -4,6 +4,7 @@ import it.ricfed.wicket.googlecharts.chart.AreaChart;
 import it.ricfed.wicket.googlecharts.chart.BarChart;
 import it.ricfed.wicket.googlecharts.chart.ColumnChart;
 import it.ricfed.wicket.googlecharts.chart.Dashboard;
+import it.ricfed.wicket.googlecharts.chart.OrgChart;
 import it.ricfed.wicket.googlecharts.chart.PieChart;
 import it.ricfed.wicket.googlecharts.chart.Table;
 import it.ricfed.wicket.googlecharts.control.CategoryFilter;
@@ -100,6 +101,49 @@ public class ExamplePage extends WebPage {
 			pieChart.getWrapper().getOptions().setLegend(legend);
 		}
 		add(pieChart);
+		ChartData data2=new ChartData();
+		List<String> labels2 = new ArrayList<String>();
+		labels2.add("Name");
+		labels2.add("Manager");
+		labels2.add("ToolTip");
+		data2.setLabels(labels2);
+
+		v = new ArrayList<Serializable>();
+		v.add("Mike");
+		v.add("");
+		v.add("The President");
+		data2.getDatasets().add(new DataSet(v));
+
+		v = new ArrayList<Serializable>();
+		v.add("Jim");
+		v.add("Mike");
+		v.add("VP");
+		data2.getDatasets().add(new DataSet(v));
+
+		v = new ArrayList<Serializable>();
+		v.add("Alice");
+		v.add("Mike");
+		v.add("");
+		data2.getDatasets().add(new DataSet(v));
+
+		v = new ArrayList<Serializable>();
+		v.add("Bob");
+		v.add("Jim");
+		v.add("Bob Sponge");
+		data2.getDatasets().add(new DataSet(v));
+
+		v = new ArrayList<Serializable>();
+		v.add("Carol");
+		v.add("Bob");
+		v.add("");
+		data2.getDatasets().add(new DataSet(v));
+
+
+		OrgChart orgChart = new OrgChart("orgChart");
+		orgChart.setDataTable(data2);
+		orgChart.getWrapper().getOptions().setAllowCollapse(true);
+		add(orgChart);
+
 	}
 
 }

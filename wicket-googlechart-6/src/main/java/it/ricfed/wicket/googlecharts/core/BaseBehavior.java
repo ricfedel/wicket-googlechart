@@ -43,7 +43,7 @@ public abstract class BaseBehavior extends AbstractDefaultAjaxBehavior implement
 		response.render(JavaScriptHeaderItem
 				.forUrl("https://www.google.com/jsapi"));
 		String jsg = "	google.load('visualization', '1.2', {\n"
-				+ "packages : [ 'corechart', 'controls', 'table' ]\n" + "});";
+				+ "packages : [ 'corechart', 'controls', 'table' , 'orgchart' ]\n" + "});";
 		response.render(JavaScriptHeaderItem.forScript(jsg, "jsg"));
 		response.render(JavaScriptHeaderItem
 				.forReference(new JavaScriptResourceReference(

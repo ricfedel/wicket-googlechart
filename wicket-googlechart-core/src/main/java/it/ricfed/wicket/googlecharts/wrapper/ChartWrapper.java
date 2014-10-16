@@ -27,6 +27,8 @@ public abstract class ChartWrapper<O extends AbstractChartOptions> extends
 
 	public static final String COMBO_CHART = "ComboChart";
 
+	public static final String ORG_CHART = "OrgChart";
+
 	/** The options. */
 	private ChartWrapperOptions wrapperOptions;
 	private Class<O> classOptions;
